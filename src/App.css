@@ -1,4 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+	--color-body: #353535;
+}
+
 body {
-  height: 100vh;
-  padding: 5em;
+	padding: 5em;
+	font-family: 'Roboto', sans-serif;
+	background: conic-gradient(at top right, slategray, white) fixed;
+	color: var(--color-body);
+}
+
+a {
+	color: var(--color-body);
+	text-decoration: none;
+}
+
+button {
+	cursor: pointer;
 }

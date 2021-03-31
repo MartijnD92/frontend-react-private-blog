@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Switch, Route, useParams } from 'react-router-dom';
-import TopNav from './components/TopNav';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Blog from './pages/Blog';
-import BlogPosts from './pages/BlogPosts';
+import { Switch, Route } from 'react-router-dom';
+import TopNav from './components/TopNav/TopNav';
+import PrivateRoute from './components/PrivateRoute';
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import Blog from './pages/Blog/Blog';
+import BlogPosts from './pages/BlogPosts/BlogPosts';
 import './App.css';
 
 function App() {
@@ -13,20 +14,26 @@ function App() {
 
 	return (
 		<>
-			<TopNav />
+			<TopNav
+				isLoggedIn={isAuthenticated}
+				toggleLogin={toggleIsAuthenticated}
+			/>
 			<Switch>
 				<Route exact path="/">
 					<Home />
 				</Route>
 				<Route path="/login">
-					<Login />
+					<Login
+						isLoggedIn={isAuthenticated}
+						toggleLogin={toggleIsAuthenticated}
+					/>
 				</Route>
-				<Route path="/blogposts">
+				<PrivateRoute path="/blogposts" isLoggedIn={isAuthenticated}>
 					<BlogPosts />
-				</Route>
-				<Route exact path="/blog/:id">
+				</PrivateRoute>
+				<PrivateRoute exact path="/blog/:id" isLoggedIn={isAuthenticated}>
 					<Blog />
-				</Route>
+				</PrivateRoute>
 			</Switch>
 		</>
 	);

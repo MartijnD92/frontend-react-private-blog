@@ -1,0 +1,34 @@
+.nav-container ul {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 0 3em;
+	list-style: none;
+}
+
+.nav-container li a {
+	font-weight: 500;
+	text-transform: uppercase;
+	text-decoration: none;
+	cursor: pointer;
+	position: relative;
+}
+
+.nav-container li a::after {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	background: #353535;
+	width: 100%;
+	height: 5px;
+	opacity: 0;
+	transform: translateX(-100%);
+    transition: opacity 100ms ease, transform 400ms ease;
+}
+
+.nav-container li a:hover::after {
+	opacity: 1;
+	transform: translateX(0);
+    transition: opacity 350ms ease-in-out 100ms, transform 250ms ease-in-out;
+}
